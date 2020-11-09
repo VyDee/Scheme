@@ -1,0 +1,47 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname |Constructor for program, class, and method|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+(define program
+  (lambda (classl body)
+    (list 'program class body)))
+(define program?
+  (lambda (exp)
+    (eq? (car exp) 'program)))
+(define program-get-class
+  (lambda (exp)
+    (cadr exp)))
+(define program-get-body
+  (lambda (exp)
+    (caddr exp)))
+(define class
+  (lambda (class-name super-name field-name method)
+    (list 'class class-name super-name field-name method)))
+(define class?
+  (lambda (exp)
+    (eq? (car exp) 'classDecl)))
+(define class-get-class
+  (lambda (exp)
+    (cadr exp)))
+(define class-get-super
+  (lambda (exp)
+    (caddr exp)))
+(define class-get-field
+  (lambda (exp)
+    (cadddr exp)))
+(define class-get-method
+  (lambda (exp)
+    (caddddr exp)))
+(define method
+  (lambda (method-name vars body)
+    (list 'method method-name vars body)))
+(define method?
+  (lambda (exp)
+    (eq? (car exp) 'method)))
+(define method-get-name
+  (lambda (exp)
+    (cadr exp)))
+(define method-get-body
+  (lambda (exp)
+    (caddr exp)))
+  
+  
